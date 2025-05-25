@@ -69,9 +69,9 @@ def login_face():
     results = face_recognition.compare_faces([stored_encoding], unknown_face_encoding)
 
     if results[0]:
-        return jsonify({'student_id': student_id})
+        return jsonify({'success': True, 'student_id': student_id}), 200
 
-    return jsonify({'error': 'Face not recognized'}), 404
+    return jsonify({'success': False, 'error': 'Face not recognized'}), 404
 
 
 if __name__ == '__main__':
